@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Posts Index</title>
+</head>
+<body>
+    <h1>Blog Posts</h1>
+    <ul>
+        <% for (let p of blogposts) { %>
+            <li><%=p.username%> (<%=p.date%>) <b>:</b> <%=p.comment%> <a href="/blog/<%=p.id%>">post details</a></li>
+        <% } %>
+    </ul>
+    <a href="/blog/new">Add a new post...</a>
+</body>
+</html>
