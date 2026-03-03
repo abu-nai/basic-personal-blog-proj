@@ -7,12 +7,12 @@
 </head>
 <body>
     <h1>Edit your post:</h1>
-    <form method="POST" action="/comments/<%=comment.id%>?_method=PATCH">
+    <form method="POST" action="/blog/<%=blogpost.id%>?_method=PATCH">
         <label for="comment"></label>
-        <textarea name="comment" cols="30" rows="10"><%= comment.comment %></textarea>
+        <textarea name="comment" cols="30" rows="10"><%= blogpost.comment %></textarea>
         <br>
         <button>save changes</button>        
     </form>
-    <a href="/comments/<%=comment.id%>">back to post page</a>
+    <a href="/blog/<%=blogpost.id%>">back to post page</a>
 </body>
 </html>

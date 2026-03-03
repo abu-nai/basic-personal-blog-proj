@@ -12,7 +12,7 @@ app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'ejs');
 
 // our fake database
-let comments = [
+let blogposts = [
     {
         id: uuid() ,
         username: 'Metalsmith',
@@ -40,50 +40,50 @@ let comments = [
 ]
 
 // index route
-app.get('/comments', (req, res) => {
-    res.render('comments/index', { comments })
+app.get('/blog', (req, res) => {
+    res.render('blog/index', { blogposts })
 })
 
 // new route
-app.get('/comments/new', (req, res) => {
-    res.render('comments/new')
+app.get('/blog/new', (req, res) => {
+    res.render('blog/new')
 })
 
 // create route
-app.post('/comments', (req, res) => {
+app.post('/blog', (req, res) => {
     const { username, comment, date } = req.body;
-    comments.push({ username, date, comment, id: uuid() });
-    res.redirect('/comments');
+    blogposts.push({ username, date, comment, id: uuid() });
+    res.redirect('/blog');
 })
 
 // show route
-app.get('/comments/:id', (req, res) => {
+app.get('/blog/:id', (req, res) => {
     const { id } = req.params;
-    const comment = comments.find(c => c.id === id);
-    res.render('comments/show', { comment });
+    const blogpost = blogposts.find(p => p.id === id);
+    res.render('blog/show', { blogpost });
 })
 
 // edit route
-app.get('/comments/:id/edit', (req, res) => {
+app.get('/blog/:id/edit', (req, res) => {
     const { id } = req.params;
-    const comment = comments.find(c => c.id === id);
-    res.render('comments/edit', { comment });
+    const blogpost = blogposts.find(p => p.id === id);
+    res.render('blog/edit', { blogpost });
 })
 
 // update route
-app.patch('/comments/:id', (req, res) => {
+app.patch('/blog/:id', (req, res) => {
     const { id } = req.params;
-    const newCommentText = req.body.comment;
-    const foundComment = comments.find(c => c.id === id);
-    foundComment.comment = newCommentText;
-    res.redirect('/comments');
+    const newBlogText = req.body.comment;
+    const foundBlog = blogposts.find(p => p.id === id);
+    foundBlog.comment = newBlogText;
+    res.redirect('/blog');
 })
 
 // delete route
-app.delete('/comments/:id', (req, res) => {
+app.delete('/blog/:id', (req, res) => {
     const { id } = req.params;
-    comments = comments.filter(c => c.id !== id);
-    res.redirect('/comments');
+    blogposts = blogposts.filter(p => p.id !== id);
+    res.redirect('/blog');
 })
 
 app.get('/rings', (req, res) => {
