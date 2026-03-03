@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Blog Post</title>
+</head>
+<body>
+    <h1>Submit a new blog post:</h1>
+    <form action="/comments" method="post">
+        <section>
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" placeholder="username">
+        </section>
+        <br>
+        <section>
+            <label for="date">Date:</label>
+            <input type="text" name="date" id="date" placeholder="enter the date...">
+        </section>
+        <br>
+        <section>
+            <label for="comment"><b>What do you want to say:</b></label>
+            <br>
+            <textarea name="comment" id="comment" cols="30" rows="10">thinking... dreaming...</textarea>
+        </section>
+        <button>submit</button>
+    </form>
+    <a href="/comments">Back to all blog posts...</a>
+</body>
+</html>
